@@ -1,0 +1,8 @@
+; just_for_fun.def
+
+LIBRARY         just_for_funF
+DESCRIPTION     'just_for_fun DLL Server'
+
+EXPORTS
+	DllCanUnloadNow     @1 PRIVATE
+	DllGetClassObject   @2 PRIVATE
