@@ -1,0 +1,47 @@
+import "unknwn.idl";
+//Interface IFunction
+[
+	object,
+	uuid(3DC9017D-10E4-4D83-8097-E0FC0497B9AA),
+	helpstring("IFunction  Interface"),
+	pointer_default(unique)
+]
+interface IFunction : IUnknown
+{
+	HRESULT getValue([out] double * d);
+	HRESULT setValue([in] double d);
+};
+
+//Interface ISerialization
+[
+	object,
+	uuid(048C493E-A924-4345-8650-18BE597B41AA),
+	helpstring("ISerialization  Interface"),
+	pointer_default(unique)
+]
+interface ISerialization : IUnknown
+{
+	HRESULT Load();
+	HRESULT Store();
+};
+
+[
+		uuid(10C1D956-B61A-4B2C-8795-58CA53298AAA),
+		version(1.0),
+		helpstring("CFunction 1.0 Type Library")
+]
+library FunctionLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	//Component
+	[
+		uuid(36C1D956-B61A-4B2C-8795-58CA53298AAA),
+		helpstring("Component class")
+	]
+	coclass CFunction
+	{
+		[default]  interface IFunction;
+		interface ISerialization;
+	};
+};
