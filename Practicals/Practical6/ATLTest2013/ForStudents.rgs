@@ -1,0 +1,26 @@
+HKCR
+{
+	ATLTest2013.ForStudents.1 = s 'ForStudents Class'
+	{
+		CLSID = s '{64E3FED8-D31B-46DD-B16A-767A78681A8C}'
+	}
+	ATLTest2013.ForStudents = s 'ForStudents Class'
+	{
+		CLSID = s '{64E3FED8-D31B-46DD-B16A-767A78681A8C}'
+		CurVer = s 'ATLTest2013.ForStudents.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {64E3FED8-D31B-46DD-B16A-767A78681A8C} = s 'ForStudents Class'
+		{
+			ProgID = s 'ATLTest2013.ForStudents.1'
+			VersionIndependentProgID = s 'ATLTest2013.ForStudents'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{81F71EF5-261E-4938-96FE-D377957A8F5C}'
+		}
+	}
+}

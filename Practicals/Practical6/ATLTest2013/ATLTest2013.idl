@@ -1,0 +1,41 @@
+// ATLTest2013.idl : IDL source for ATLTest2013.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ATLTest2013.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(3497DE41-1E18-4EF8-ABB0-C56ED746066D),
+		dual,
+		helpstring("IForStudents Interface"),
+		pointer_default(unique)
+	]
+	interface IForStudents : IDispatch
+	{
+		[id(1), helpstring("method Test2013")] HRESULT Test2013();
+		[propget, id(2), helpstring("property Val")] HRESULT Val([out, retval] double *pVal);
+		[propput, id(2), helpstring("property Val")] HRESULT Val([in] double newVal);
+	};
+
+[
+	uuid(81F71EF5-261E-4938-96FE-D377957A8F5C),
+	version(1.0),
+	helpstring("ATLTest2013 1.0 Type Library")
+]
+library ATLTEST2013Lib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(64E3FED8-D31B-46DD-B16A-767A78681A8C),
+		helpstring("ForStudents Class")
+	]
+	coclass ForStudents
+	{
+		[default] interface IForStudents;
+	};
+};

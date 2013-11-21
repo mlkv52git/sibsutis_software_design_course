@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<TITLE>ATL test page for object TestObj1</TITLE>
+</HEAD>
+<BODY>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var obj;
+obj=new ActiveXObject("ATLTest2013.ForStudents.1");
+-->
+</SCRIPT>
+
+<FORM NAME="ShowCOM">
+<INPUT  NAME="EnterVal" SIZE="24"  TYPE="text" >
+<INPUT TYPE="button" VALUE="Test2013" onClick="obj.Val=document.ShowCOM.EnterVal.value; obj.Test2013();">
+</FORM>
+
+</BODY>
+</HTML>
