@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <schema targetNamespace="urn:remcuda"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:remcuda"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <!-- operation request element -->
+  <element name="sum">
+   <complexType>
+    <sequence>
+     <element name="v1" type="ns:ArrayOffloat" minOccurs="1" maxOccurs="1" nillable="true"/><!-- ns__sum::v1 -->
+     <element name="v2" type="ns:ArrayOffloat" minOccurs="1" maxOccurs="1" nillable="true"/><!-- ns__sum::v2 -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="sumResponse">
+   <complexType>
+    <sequence>
+     <element name="result" type="ns:ArrayOffloat" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__sum::result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="InnerProduct">
+   <complexType>
+    <sequence>
+     <element name="v1" type="ns:ArrayOffloat" minOccurs="1" maxOccurs="1" nillable="true"/><!-- ns__InnerProduct::v1 -->
+     <element name="v2" type="ns:ArrayOffloat" minOccurs="1" maxOccurs="1" nillable="true"/><!-- ns__InnerProduct::v2 -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="InnerProductResponse">
+   <complexType>
+    <sequence>
+     <element name="result" type="xsd:float" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__InnerProduct::result -->
+    </sequence>
+   </complexType>
+  </element>
+ </schema>
+

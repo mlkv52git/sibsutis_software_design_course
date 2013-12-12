@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="remcuda"
+ targetNamespace="http://178.49.13.74/remcuda.wsdl"
+ xmlns:tns="http://178.49.13.74/remcuda.wsdl"
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:ns="urn:remcuda"
+ xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+ xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+ xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+ xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+ <schema targetNamespace="urn:remcuda"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:ns="urn:remcuda"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <complexType name="ArrayOffloat">
+   <complexContent>
+    <restriction base="SOAP-ENC:Array">
+     <sequence>
+      <element name="item" type="xsd:float" minOccurs="0" maxOccurs="unbounded" nillable="false"/>
+     </sequence>
+     <attribute ref="SOAP-ENC:arrayType" WSDL:arrayType="xsd:float[]"/>
+    </restriction>
+   </complexContent>
+  </complexType>
+  <!-- operation request element -->
+  <element name="sum">
+   <complexType>
+    <sequence>
+     <element name="v1" type="ns:ArrayOffloat" minOccurs="1" maxOccurs="1" nillable="true"/><!-- ns__sum::v1 -->
+     <element name="v2" type="ns:ArrayOffloat" minOccurs="1" maxOccurs="1" nillable="true"/><!-- ns__sum::v2 -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="sumResponse">
+   <complexType>
+    <sequence>
+     <element name="result" type="ns:ArrayOffloat" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__sum::result -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="InnerProduct">
+   <complexType>
+    <sequence>
+     <element name="v1" type="ns:ArrayOffloat" minOccurs="1" maxOccurs="1" nillable="true"/><!-- ns__InnerProduct::v1 -->
+     <element name="v2" type="ns:ArrayOffloat" minOccurs="1" maxOccurs="1" nillable="true"/><!-- ns__InnerProduct::v2 -->
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="InnerProductResponse">
+   <complexType>
+    <sequence>
+     <element name="result" type="xsd:float" minOccurs="0" maxOccurs="1" nillable="true"/><!-- ns__InnerProduct::result -->
+    </sequence>
+   </complexType>
+  </element>
+ </schema>
+
+</types>
+
+<message name="sumRequest">
+ <part name="parameters" element="ns:sum"/><!-- ns__sum::ns__sum -->
+</message>
+
+<message name="sumResponse">
+ <part name="parameters" element="ns:sumResponse"/>
+</message>
+
+<message name="InnerProductRequest">
+ <part name="parameters" element="ns:InnerProduct"/><!-- ns__InnerProduct::ns__InnerProduct -->
+</message>
+
+<message name="InnerProductResponse">
+ <part name="parameters" element="ns:InnerProductResponse"/>
+</message>
+
+<portType name="remcudaPortType">
+ <operation name="sum">
+  <documentation>Service definition of function ns__sum</documentation>
+  <input message="tns:sumRequest"/>
+  <output message="tns:sumResponse"/>
+ </operation>
+ <operation name="InnerProduct">
+  <documentation>Service definition of function ns__InnerProduct</documentation>
+  <input message="tns:InnerProductRequest"/>
+  <output message="tns:InnerProductResponse"/>
+ </operation>
+</portType>
+
+<binding name="remcuda" type="tns:remcudaPortType">
+ <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+ <operation name="sum">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="InnerProduct">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+</binding>
+
+<service name="remcuda">
+ <documentation>gSOAP 2.8.11 generated service definition</documentation>
+ <port name="remcuda" binding="tns:remcuda">
+  <SOAP:address location="http://127.0.0.1:161952"/>
+ </port>
+</service>
+
+</definitions>

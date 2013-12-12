@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:ns="urn:remcuda">
+ <SOAP-ENV:Body>
+  <ns:sum>
+   <v1 SOAP-ENC:arrayType="xsd:float[3]">
+    <item>2.0</item>
+    <item>3.0</item>
+    <item>7.0</item>    
+   </v1>
+   <v2 SOAP-ENC:arrayType="xsd:float[3]">
+    <item>9.0</item>
+    <item>4.0</item>
+    <item>5.0</item>    
+   </v2>
+  </ns:sum>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
